@@ -1,17 +1,17 @@
 ----------------------------------------------------------------------------------
--- Engineer: 				Jason Murphy
--- Create Date:   		09:00 01/27/2016 
--- Design Name: 			UART
+-- Engineer: 			Jason Murphy
+-- Create Date:   		09:00 01/12/2011 
+-- Design Name: 		UART
 -- Module Name:   		UART - Behavioral 
--- Project Name: 			GPSInterface
+-- Project Name: 		GPSInterface
 -- Target Devices: 		Spartan 6 xc6slx9-3tgg144
 -- Tool versions: 		ISE 14.7
--- Description: 			8 bit output UART receiver
---								Fixed at 9600 baud, no parity
---								receive only no RTS/CTS Ctrl
---								Revision V0.01
+-- Description: 		8 bit output UART receiver
+--				Fixed at 9600 baud, no parity
+--				receive only no RTS/CTS Ctrl
+--				Revision V0.01
 -- Dependencies: 			
--- Revision 				0.01 - File Created
+-- Revision 			0.01 - File Created
 -- Additional Comments: 
 ----------------------------------------------------------------------------------
 library IEEE;
@@ -23,8 +23,8 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity UART is Port ( 
 	clk50 : in STD_LOGIC;
 	RxD : in  STD_LOGIC;
-   Dout : out  STD_LOGIC_VECTOR (7 downto 0);
-   Drdy : out  STD_LOGIC);
+   	Dout : out  STD_LOGIC_VECTOR (7 downto 0);
+   	Drdy : out  STD_LOGIC);
 end UART;
 
 architecture Behavioral of UART is
