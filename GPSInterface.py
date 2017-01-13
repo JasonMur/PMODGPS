@@ -8,9 +8,6 @@ def i2cWrite(busNr, devAddr, regAddr, values):
 def i2cRead(busNr, devAddr, regAddr, numBytes):
     bus = smbus.SMBus(busNr)
     values = bus.read_i2c_block_data(devAddr, regAddr, numBytes)
-    #for i in range(0,16):
-    	#print("Read ", format(int(values[i]), '#04X'))
-	#print(str(unichr(values[i])))
     return values
 
 for o in range(0,100):
