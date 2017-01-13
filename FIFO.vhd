@@ -1,15 +1,15 @@
 ----------------------------------------------------------------------------------
--- Engineer: 			Jason Murphy
--- Create Date:   		09:00 01/12/2011 
--- Design Name: 		FIFO
+-- Engineer: 				Jason Murphy
+-- Create Date:   		09:00 01/27/2016 
+-- Design Name: 			FIFO
 -- Module Name:   		FIFO - Behavioral 
--- Project Name: 		GPSInterface
+-- Project Name: 			GPSInterface
 -- Target Devices: 		Spartan 6 xc6slx9-3tgg144
 -- Tool versions: 		ISE 14.7
--- Description: 		8 bit FIFO for buffering UART data
---				Revision V0.01
+-- Description: 			8 bit FIFO for buffering UART data
+--								Revision V0.01
 -- Dependencies: 			
--- Revision 			0.01 - File Created
+-- Revision 				0.01 - File Created
 -- Additional Comments: 
 ----------------------------------------------------------------------------------
 
@@ -21,11 +21,11 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity fifo is port (  
 	clk50 : in std_logic;
-   	readData : in std_logic;   --Read Data from FIFO.  Active low data read on falling edge
-   	writeData : in std_logic;  --Write Data to FIFO.  Active low data written on falling edge
-   	dataOut : out std_logic_vector(7 downto 0);    --output data from FIFO
-   	dataIn : in std_logic_vector (7 downto 0);     --input data to FIFO
-   	empty, full : out std_logic);     --set as '1' when FIFO overrun occurs
+   readData : in std_logic;   --Read Data from FIFO.  Active low data read on falling edge
+   writeData : in std_logic;  --Write Data to FIFO.  Active low data written on falling edge
+   dataOut : out std_logic_vector(7 downto 0);    --output data from FIFO
+   dataIn : in std_logic_vector (7 downto 0);     --input data to FIFO
+   empty, full : out std_logic);     --set as '1' when FIFO overrun occurs
 end fifo;
 
 architecture Behavioral of fifo is
@@ -43,24 +43,26 @@ begin
 		writeDataSig <= writeDataSig(0) & writeData;
 		
 		if readDataSig = "10" then
-			--if FIFOReadPtr /= FIFOWritePtr then
+			if FIFOReadPtr = FIFOWritePtr then
+				dataOut <= "00100100";
+				empty <= '1';
+			else
 				dataOut <= FIFO(FIFOReadPtr);
 				FIFOReadPtr <= FIFOReadPtr + 1;
 				empty <= '0';
-			--else
-			--	dataOut <= "10101011";
-			--	empty <= '1';
-			--end if;
+			end if;
 		end if;
 		
 		if writeDataSig = "10" then
-			--if FIFOWritePtr + 1 < FIFOReadPtr then
+			if (FIFOWritePtr + 1) = FIFOReadPtr then
+				full <= '1';
+			elsif FIFOWritePtr = 255 and FIFOReadPtr = 0 then
+				full <= '1';
+			else
 				FIFO(FIFOWritePtr) <= datain;
 				FIFOWritePtr <= FIFOWritePtr + 1;
 				full <= '0';
-			--else
-			--	full <= '1';
-			--end if;
+			end if;
 		end if;
 		
 	end if;
