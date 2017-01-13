@@ -10,8 +10,7 @@ def i2cRead(busNr, devAddr, regAddr, numBytes):
     values = bus.read_i2c_block_data(devAddr, regAddr, numBytes)
     return values
 
-value = 0
-values = [0]
+values = []
 while True:
     value = i2cRead(1,0x62,0,1)
     if value == [36]:
