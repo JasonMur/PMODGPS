@@ -11,15 +11,15 @@ def i2cRead(busNr, devAddr, regAddr, numBytes):
     return values
 
 values = []
+
 while True:
     value = i2cRead(1,0x62,0,1)
     if value == [36]:
-	a = ''.join(chr(i) for i in values)
-	print a
-	values = []
-    else:
+	    a = ''.join(chr(i) for i in values)
+	    print a
+	    values = []
+    elif value != [255]:
 	values.append(value[0])
-   
 
 
 
