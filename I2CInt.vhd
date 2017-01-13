@@ -1,20 +1,20 @@
 ----------------------------------------------------------------------------------
--- Engineer: 				Jason Murphy
--- Create Date:   		09:00 01/27/2016 
--- Design Name: 			I2CInt
+-- Engineer: 			Jason Murphy
+-- Create Date:   		09:00 01/12/2017 
+-- Design Name: 		I2CInt
 -- Module Name:   		I2CInt - Behavioral 
--- Project Name: 			Phy
+-- Project Name: 		Phy
 -- Target Devices: 		Spartan 6 xc6slx9-3tgg144
 -- Tool versions: 		ISE 14.7
--- Description: 			Simple I2C interface with 8 bit reg allowing 
---								multibyte read/write
---								Revision V1.1 now with Clock Stretching.
---								(When an external interface holds Bsy high
---								sck is held low to pause data transmission).
+-- Description: 		Simple I2C interface with 8 bit reg allowing 
+--				multibyte read/write
+--				Revision V1.1 now with Clock Stretching.
+--				(When an external interface holds Bsy high
+--				sck is held low to pause data transmission).
 -- Dependencies: 			
--- Revision:				V1.1 "Clock Stretching" implemented
--- Revision: 				V1.0 Tested 
--- Revision 				0.01 - File Created
+-- Revision:			V1.1 "Clock Stretching" implemented
+-- Revision: 			V1.0 Tested 
+-- Revision 			0.01 - File Created
 -- Additional Comments: 
 ----------------------------------------------------------------------------------
 library IEEE;
