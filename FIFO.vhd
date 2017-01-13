@@ -44,7 +44,7 @@ begin
 		
 		if readDataSig = "10" then
 			if FIFOReadPtr = FIFOWritePtr then
-				dataOut <= "00100100";
+				dataOut <= "11111111";
 				empty <= '1';
 			else
 				dataOut <= FIFO(FIFOReadPtr);
