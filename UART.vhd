@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Engineer: 			Jason Murphy
--- Create Date:   		09:00 01/12/2011 
+-- Create Date:   		09:00 01/12/2017 
 -- Design Name: 		UART
 -- Module Name:   		UART - Behavioral 
 -- Project Name: 		GPSInterface
